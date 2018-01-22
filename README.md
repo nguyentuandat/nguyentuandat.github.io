@@ -1,5 +1,5 @@
 # nguyentuandat.github.io
-Axel Muusfeldts Fond theme
+Axel Muusfeldts Fond theme 
 ========
 @author:    [Đạt Nguyễn](mailto:nguyentuandat.vn@gmail.com).
 
@@ -32,7 +32,7 @@ Axel Muusfeldts Fond theme
 </div>
 <div class="row"><div class="col-md-12" style="text-align:center;">[submit class:btn-amf "Send"]</div></div>
 ```
-2. Go to tab **Additional settings**, add this code:
+2. Go to tab **Additional settings**, add this codes:
 ```javascript
 on_sent_ok: "showPopup('#modalThankyou');"
 ```
