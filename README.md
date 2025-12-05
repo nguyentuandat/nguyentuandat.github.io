@@ -1,38 +1,20 @@
-# nguyentuandat.github.io
-Axel Muusfeldts Fond theme 
-========
-@author:    [Đạt Nguyễn](mailto:nguyentuandat.vn@gmail.com).
+<div align="center">
+<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+</div>
 
-@version:   1.0.0.
-### How to install
-1. Upload theme to themes folder and active it.
-2. Install and active all required plugins.
-3. Import sample data.
-4. Done
+# Run and deploy your AI Studio app
 
-### How to configure
-#### Configure Contact form 7 plugin
-1. Generate contact form
-```html
-<div class="row">
-<div class="col-md-12">[text* your-name class:form-control placeholder "Navn"]</div>
-</div>
-<div class="row">
-<div class="col-md-6">[email* your-email id:cfEmail class:form-control placeholder "E-mail-adresse"] </div>
-<div class="col-md-6">[confirm_email* confirm_email-842 id:cfEmail2 class:form-control placeholder "Gentag E-mail-adresse"] </div>
-</div>
-<div class="row">
-<div class="col-md-6">[text phone class:form-control placeholder "Telefonnummer"]</div>
-</div>
-<div class="row">
-<div class="col-md-12">[text* your-subject class:form-control placeholder "Emne"] </div>
-</div>
-<div class="row">
-<div class="col-md-12">[textarea your-message class:form-control placeholder "Besked"] </div>
-</div>
-<div class="row"><div class="col-md-12" style="text-align:center;">[submit class:btn-amf "Send"]</div></div>
-```
-2. Go to tab **Additional settings**, add this codes:
-```javascript
-on_sent_ok: "showPopup('#modalThankyou');"
-```
+This contains everything you need to run your app locally.
+
+View your app in AI Studio: https://ai.studio/apps/drive/1KKU-wILxYRcEZGNrsdl2Tg09fB6Z-9IY
+
+## Run Locally
+
+**Prerequisites:**  Node.js
+
+
+1. Install dependencies:
+   `npm install`
+2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
+3. Run the app:
+   `npm run dev`
