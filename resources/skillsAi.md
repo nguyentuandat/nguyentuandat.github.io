@@ -1,5 +1,3 @@
-
-export const AI_SKILLS = `
 # AI & GenAI Tools
 
 ## Coding Assistants
@@ -17,4 +15,3 @@ export const AI_SKILLS = `
 
 ## Integration
 - **API Implementation:** Experience integrating OpenAI and Gemini APIs into applications for features like chatbots, summarization, and content generation.
-`;

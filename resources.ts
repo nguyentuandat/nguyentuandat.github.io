@@ -1,18 +1,18 @@
 
-import { FRONTEND_SKILLS } from './resources/skillsFrontend';
-import { BACKEND_SKILLS } from './resources/skillsBackend';
-import { BLOCKCHAIN_SKILLS } from './resources/skillsBlockchain';
-import { AI_SKILLS } from './resources/skillsAi';
-import { DEVOPS_SKILLS } from './resources/skillsDevOps';
-import { PROJECT_DETAILS } from './resources/projectDetails';
+import skillsFrontend from './resources/skillsFrontend.md?raw';
+import skillsBackend from './resources/skillsBackend.md?raw';
+import skillsBlockchain from './resources/skillsBlockchain.md?raw';
+import skillsAi from './resources/skillsAi.md?raw';
+import skillsDevOps from './resources/skillsDevOps.md?raw';
+import projectDetails from './resources/projectDetails.md?raw';
 
 // Exporting a map of filenames to their markdown content.
 // The AI service iterates over this object to feed context to the model.
 export const RESOURCES: Record<string, string> = {
-  "skills_frontend.md": FRONTEND_SKILLS,
-  "skills_backend.md": BACKEND_SKILLS,
-  "skills_blockchain.md": BLOCKCHAIN_SKILLS,
-  "skills_ai.md": AI_SKILLS,
-  "skills_devops.md": DEVOPS_SKILLS,
-  "project_details.md": PROJECT_DETAILS,
+  "skills_frontend.md": skillsFrontend,
+  "skills_backend.md": skillsBackend,
+  "skills_blockchain.md": skillsBlockchain,
+  "skills_ai.md": skillsAi,
+  "skills_devops.md": skillsDevOps,
+  "project_details.md": projectDetails,
 };

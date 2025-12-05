@@ -1,5 +1,3 @@
-
-export const FRONTEND_SKILLS = `
 # Frontend Development Skills
 
 ## ReactJS & NextJS
@@ -32,4 +30,3 @@ I have over 5 years of specialized experience with React. My expertise covers:
 ## Build Tools & Performance
 - **Vite:** Migrated projects from Create React App to Vite, significantly reducing dev server startup times.
 - **Lighthouse:** Regularly use it to audit Core Web Vitals, ensuring high performance, accessibility, and SEO scores.
-`;

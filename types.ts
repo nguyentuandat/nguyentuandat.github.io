@@ -61,6 +61,8 @@ export interface ResumeData {
   education: EducationItem[];
   skills: SkillCategory[];
   tools: ToolItem[];
+  dob: string;
+  hobbies?: string[];
 }
 
 export enum ChatState {

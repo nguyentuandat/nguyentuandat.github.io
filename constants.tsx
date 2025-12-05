@@ -77,6 +77,8 @@ export const RESUME_DATA: ResumeData = {
   email: "nguyentuandat.vn@gmail.com",
   phone: "(+84) 949 000 910",
   address: "Ho Chi Minh city, Viet Nam",
+  dob: "5/6/1990",
+  hobbies: ["Traveling", "Reading", "Gaming", "Coding", "AI Exploration", "Badminton", "Chess", "Running", "Workout"],
   socials: [
     { platform: "Telegram", username: "@nguyentuandat.vn", url: "https://t.me/nguyentuandatvn", icon: <Icons.Telegram /> },
     { platform: "LinkedIn", username: "nguyentuandat.vn", url: "https://linkedin.com/in/nguyentuandatvn", icon: <Icons.LinkedIn /> }

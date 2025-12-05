@@ -1,5 +1,3 @@
-
-export const BACKEND_SKILLS = `
 # Backend Development Skills
 
 ## Node.js Ecosystem
@@ -25,4 +23,3 @@ export const BACKEND_SKILLS = `
 - **Microservices:** Breaking down monolithic applications into loosely coupled services communicating via HTTP or message brokers.
 - **Auth & ACL:** Implementing JWT (JSON Web Tokens) and OAuth2 for secure authentication. Designing Granular Access Control Lists (ACL) for role-based permissions.
 - **Security Best Practices:** Protection against SQL Injection, XSS, CSRF, and implementing rate limiting to prevent DDoS attacks.
-`;

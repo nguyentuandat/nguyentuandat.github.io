@@ -1,5 +1,3 @@
-
-export const BLOCKCHAIN_SKILLS = `
 # Blockchain & Web3 Technologies
 
 ## Ecosystems
@@ -19,4 +17,3 @@ export const BLOCKCHAIN_SKILLS = `
 ## Wallet Integration
 - **Providers:** Seamless integration with **Metamask**, **TronLink**, **Ledger** (Hardware wallets), and **WalletConnect** protocol for mobile wallet support.
 - **Security:** Handling user signatures and transaction approvals securely within the UI.
-`;
