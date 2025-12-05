@@ -37,14 +37,15 @@ Rules:
 `;
 
 let ai: GoogleGenAI | null = null;
+const apiKey = process.env.GEMINI_API_KEY || process.env.API_KEY;
 
-if (process.env.API_KEY) {
-  ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+if (apiKey) {
+  ai = new GoogleGenAI({ apiKey });
 }
 
 export const generateChatResponse = async (userMessage: string): Promise<string> => {
   if (!ai) {
-    return "I'm sorry, my AI brain hasn't been provided with an API Key (process.env.API_KEY) so I can't think right now!";
+    return "I'm sorry, my AI brain hasn't been provided with an API Key so I can't think right now!";
   }
 
   try {
