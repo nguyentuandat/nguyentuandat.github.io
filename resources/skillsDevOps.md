@@ -1,5 +1,3 @@
-
-export const DEVOPS_SKILLS = `
 # DevOps & Infrastructure
 
 ## CI/CD
@@ -11,10 +9,9 @@ export const DEVOPS_SKILLS = `
 
 ## Web Servers
 - **Nginx:** Configuring reverse proxies, load balancing, and SSL termination. Experience with caching rules to optimize static asset delivery.
-- **Apache:** Managing \`.htaccess\` configurations and virtual hosts for PHP environments.
+- **Apache:** Managing `.htaccess` configurations and virtual hosts for PHP environments.
 
 ## Operations
 - **Git:** Advanced version control workflows (Gitflow), merge conflict resolution, and submodule management.
 - **Monitoring:** Basic server monitoring and log management.
 - **Security:** Implementing rate limiting and basic firewall rules (OWASP standard awareness).
-`;

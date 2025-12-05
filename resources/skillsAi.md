@@ -1,10 +1,9 @@
-
-export const AI_SKILLS = `
 # AI & GenAI Tools
 
 ## Coding Assistants
 - **GitHub Copilot:** Daily driver for boilerplate code generation, unit test writing, and autocomplete.
 - **Cursor:** Using Cursor IDE for codebase-aware refactoring and natural language code editing.
+- **Gemini:** Pairing with the Gemini Advanced Code Assist for code reviews, prompt-to-code scaffolding, and architectural exploration.
 
 ## LLMs for Research & Architecture
 - **ChatGPT (OpenAI):** Used for brainstorming system architecture, debugging complex error logs, and generating documentation.
@@ -17,4 +16,3 @@ export const AI_SKILLS = `
 
 ## Integration
 - **API Implementation:** Experience integrating OpenAI and Gemini APIs into applications for features like chatbots, summarization, and content generation.
-`;

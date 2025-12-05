@@ -1,13 +1,11 @@
-
-export const FRONTEND_SKILLS = `
 # Frontend Development Skills
 
 ## ReactJS & NextJS
-I have over 5 years of specialized experience with React. My expertise covers:
+I have over 10 years of specialized experience with React. My expertise covers:
 - **Core:** Deep understanding of the Virtual DOM, React Hooks (useState, useEffect, useMemo, useCallback), and Custom Hooks.
 - **Architecture:** Building scalable component hierarchies, container/presenter patterns, and atomic design principles.
 - **Performance:** Optimization using code-splitting (React.lazy), memoization, and virtualization for large lists.
-- **Next.js:** Proficient in Server-Side Rendering (SSR), Static Site Generation (SSG), and App Router for SEO-optimized applications.
+- **ViteJs:** Proficient in Server-Side Rendering (SSR), Static Site Generation (SSG), and App Router for SEO-optimized applications.
 
 ## VueJS Ecosystem
 - **Vue 2 & 3:** Experienced in migrating legacy Vue 2 apps to Vue 3.
@@ -32,4 +30,3 @@ I have over 5 years of specialized experience with React. My expertise covers:
 ## Build Tools & Performance
 - **Vite:** Migrated projects from Create React App to Vite, significantly reducing dev server startup times.
 - **Lighthouse:** Regularly use it to audit Core Web Vitals, ensuring high performance, accessibility, and SEO scores.
-`;

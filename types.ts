@@ -18,8 +18,9 @@ export interface ExperienceItem {
   company: string;
   period: string;
   location: string;
-  description: string;
-  achievements?: string[]; // Split description into bullets if needed, or keep as string
+  techStack?: string;
+  scope?: string;
+  description: string[]; // Bullet-point highlights shown in the timeline and AI prompt
 }
 
 export interface ProjectItem {
@@ -50,6 +51,7 @@ export interface ToolItem {
 
 export interface ResumeData {
   name: string;
+  alias?: string;
   title: string;
   summary: string;
   email: string;
@@ -60,7 +62,12 @@ export interface ResumeData {
   experience: ExperienceItem[];
   education: EducationItem[];
   skills: SkillCategory[];
+  knowledges: string[];
   tools: ToolItem[];
+  dob: string;
+  hobbies?: string[];
+  technicalLeadership: string[];
+  systemDesignHighlights: string[];
 }
 
 export enum ChatState {

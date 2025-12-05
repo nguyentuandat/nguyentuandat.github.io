@@ -1,7 +1,12 @@
-
-export const PROJECT_DETAILS = `
 # Project Deep Dives
-
+## My CV/Resume
+**Tech Stack:** React, Vitejs, Google AI Studio
+**Details:** 
+- I try vibe coding mode with Google AI Studio to build my CV based on my information and style guideline.
+- Deploy to github pages using Github Actions
+- **Challenge:** Hard to control the AI output. Sometime it is not archive my target.
+- **Solution:** I try to learn about how to improve AI prompt
+- **Timeline:**: 4hrs
 ## Cryptocurrency Exchange Platform (Double O)
 **Tech Stack:** React, Redux, Web3.js, Node.js, Redis, Kafka.
 **Details:**
@@ -32,7 +37,7 @@ export const PROJECT_DETAILS = `
 ## Software Configuration
 - **IDE:** VS Code with custom extensions (GitLens, Prettier, ESLint, Tailwind CSS IntelliSense).
 - **Terminal:** Warp Terminal using Oh-My-Zsh and Starship prompt.
-- **AI Workflow:** heavily reliant on GitHub Copilot for boilerplate and Grok/Claude for architectural planning.
+- **AI Workflow:** heavily reliant on GitHub Copilot for boilerplate and Grok/Claude/Gemini for architectural planning.
 
 # Side Projects & Experiments
 
@@ -43,6 +48,5 @@ export const PROJECT_DETAILS = `
 
 ## "AI Resume Builder" (Web)
 - **Status:** In Progress
-- **Stack:** Next.js, Gemini API, Vercel.
+- **Stack:** ViteJs, Gemini API, Vercel.
 - **Description:** An experiment to auto-generate resumes based on LinkedIn PDF exports using GenAI.
-`;

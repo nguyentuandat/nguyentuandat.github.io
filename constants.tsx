@@ -72,59 +72,108 @@ export const Icons = {
 
 export const RESUME_DATA: ResumeData = {
   name: "Dat Nguyen",
-  title: "Software Engineer",
-  summary: "Dynamic and versatile professional with over 10 years of experience in full-stack development and mid-level management. Proficient in frontend technologies (React, Vue, Web3.js, Ethers.js) and backend systems (PHP, Node.js, MySQL), with a strong focus on blockchain frontend solutions and AI-driven workflows (Grok, GitHub Copilot). Passionate about leading technical teams and delivering innovative projects, seeking a challenging role in a collaborative environment to drive impactful solutions.",
+  alias:"Đạt Nguyễn or Nguyễn Tuấn Đạt",
+  title: "Front-End Team Lead",
+  summary: "Front-End Team Lead with 10+ years of experience architecting high-performance web applications, including cryptocurrency exchange platforms and blockchain-based DApps. Early adopter of AI-driven development — currently leveraging AI for 80% of implementation work, shifting focus from manual coding to architecture, prompt engineering, and AI-augmented delivery. Proven ability to lead cross-functional teams, define scalable frontend architecture, and optimize performance for real-time systems. Strong focus on technical ownership, continuous learning, and aligning engineering decisions with business objectives.",
   email: "nguyentuandat.vn@gmail.com",
   phone: "(+84) 949 000 910",
   address: "Ho Chi Minh city, Viet Nam",
+  dob: "5/6/1990",
+  hobbies: ["Traveling", "Reading", "Gaming", "Coding", "AI Exploration", "Badminton", "Chinese chess", "Running", "Workout"],
   socials: [
     { platform: "Telegram", username: "@nguyentuandat.vn", url: "https://t.me/nguyentuandatvn", icon: <Icons.Telegram /> },
-    { platform: "LinkedIn", username: "nguyentuandat.vn", url: "https://linkedin.com/in/nguyentuandatvn", icon: <Icons.LinkedIn /> }
+    // { platform: "LinkedIn", username: "nguyentuandat", url: "https://linkedin.com/in/nguyentuandat", icon: <Icons.LinkedIn /> }
   ],
   languages: [
     { language: "Vietnamese", proficiency: "Native" },
     { language: "English", proficiency: "Communication" }
   ],
+  knowledges: [
+    "Frontend Architecture Design",
+    "React Ecosystem (React, ViteJs, TypeScript)",
+    "Real-time Systems (WebSocket, State Sync)",
+    "Performance Optimization",
+    "System Scalability",
+    "Team Leadership & Mentorship",
+    "Technical Roadmap Planning",
+    "Cryptocurrency Exchange UI",
+    "Blockchain (EVM, TRON, Web3.js, Ethers.js)",
+    "Trading Interfaces (Orderbook, Charts)",
+    "Cross-functional Collaboration",
+    "Agile Methodologies",
+    "Technical Documentation",
+  ],
   experience: [
     {
       id: "exp-1",
-      role: "Team Leader",
+      role: "Front-End Team Lead",
       company: "Double O",
       period: "Present",
       location: "HCM, VN",
-      description: "Founded and led technical teams to deliver outsourced solutions, including websites, e-commerce platforms, and frontend for blockchain projects (DApps, swaps, bridges, multisign wallets, NFTs) on EVM and TRON networks using JS/TS (React, Vue, Web3.js, Ethers.js), PHP (CakePHP, WordPress), and Electron for desktop apps. Leveraged AI tools (Grok, GitHub Copilot, ChatGPT, 8n8) for code assistance, code review, research, and automation flows, boosting overall performance by 20%. Developed frontend features for a cryptocurrency exchange platform. Managed backend (MySQL, MongoDB, Firebase), frontend (HTML5, CSS3 with Bootstrap, Ant Design, Material...), and DevOps operations (eg Github actions, Jenkin, Docker). Mentored developers."
+      techStack: "React, TypeScript, ViteJs, Vue, Web3.js, Ethers.js, Electron, Node.js",
+      scope: "Led frontend architecture and delivery for a high-frequency cryptocurrency exchange platform and multiple blockchain DApps serving 50k+ daily active users.",
+      description: [
+        "Led 6 engineers across 13 projects — owned sprint planning, code reviews, release cycles, and CI/CD (GitHub Actions, Docker), cutting deployment time by 40%",
+        "Built real-time orderbook (1k+ updates/min via WebSocket) with precision-safe calculations and optimized chart rendering, reducing re-render cost by 35%",
+        "Architected blockchain frontends (DApps, swaps, bridges, multisig wallets, NFTs) across EVM and TRON networks, reducing regression bugs by 30% through reusable component architecture",
+        "Adopted AI-driven development (80% AI-generated code) — integrated AI agents across the full SDLC, boosting team throughput by 3x",
+        "Spearheaded company-wide AI adoption as Agentic Engineer — authored custom instructions, rules, and skill definitions for AI coding agents; benchmarked and evaluated AI tools to standardize the most effective workflows across teams"
+      ]
     },
     {
       id: "exp-2",
-      role: "Full stack developer",
+      role: "Senior Frontend Developer",
       company: "Ringier",
       period: "May 2018 - May 2019",
       location: "HCM, VN",
-      description: "Developed and maintained real estate trading platforms using Node.js micro-services and ReactJS, improving user interaction speed by 30%. Built and customized WordPress-based magazine websites. Collaborated with product teams to implement responsive designs. Optimized backend APIs, reducing server response time for high-traffic platforms."
+      techStack: "React, Vue, Node.js, Express, WordPress, SQL, No-SQL",
+      scope: "Built React-based interfaces and Node.js microservices for a real estate trading platform handling high-traffic audiences.",
+      description: [
+        "Owned frontend architecture for real estate trading platform, improving interaction speed by 30%",
+        "Built responsive, SEO-optimized interfaces and coordinated API contracts with backend team",
+        "Partnered with product and design teams to ship UX improvements reducing bounce rate by 20%"
+      ]
     },
     {
       id: "exp-3",
-      role: "Full stack developer",
+      role: "Frontend Developer",
       company: "Wumbo",
       period: "May 2016 - May 2018",
       location: "HCM, VN",
-      description: "Developed building and project management systems for high-end residential buildings using PHP (Phalcon), MySQL, Node.js, and Sails.js. Built core functionalities based on team leader's requirements. Implemented features with Node.js and ReactJS, improving user interface responsiveness. Trained frontend developers, boosting team's front-end development capacity."
+      techStack: "React, PHP (Phalcon, CakePHP), Node.js, Sails.js, SQL, No-SQL",
+      scope: "Developed project management platforms for luxury residential clients with complex data visualization needs.",
+      description: [
+        "Delivered core frontend features for building management platforms using React and Node.js",
+        "Improved frontend performance and responsiveness, reducing TTI by 25%",
+        "Trained and mentored 3 junior developers, expanding the team's React capability"
+      ]
     },
     {
       id: "exp-4",
-      role: "Full stack developer",
+      role: "Web Developer",
       company: "Apide",
       period: "May 2015 - May 2016",
       location: "HCM, VN",
-      description: "Developed and customized WordPress websites and plugins for magazine, corporate, and fund management platforms. Collaborated with international clients and partners from Denmark, Italy, and Germany to deliver tailored web solutions."
+      techStack: "WordPress, PHP (Laravel, CakePHP), JavaScript, MySQL",
+      scope: "Delivered custom web solutions for international corporate and fund management clients.",
+      description: [
+        "Delivered custom WordPress websites and plugins for corporate and fund management clients",
+        "Collaborated with stakeholders across Denmark, Italy, and Germany to meet launch timelines with 95% on-time delivery"
+      ]
     },
     {
       id: "exp-5",
-      role: "Full stack developer",
+      role: "Web Developer",
       company: "BCA",
       period: "May 2013 - May 2015",
       location: "HCM, VN",
-      description: "Developed web solutions for e-commerce, magazines, blogs, corporate sites, e-learning, fundraising, wheel games, rent space, and booking systems using CakePHP, MySQL, and WordPress. Collaborated with clients and partners from Singapore, UK, and US, achieving a 90% client satisfaction rate and fostering long-term business relationships. Optimized web applications, reducing page load times by 15% and enhancing user engagement."
+      techStack: "CakePHP, WordPress, MySQL, JavaScript",
+      scope: "Built web solutions spanning e-commerce, media, education, and booking systems for international clients.",
+      description: [
+        "Delivered full-stack web solutions for clients in Singapore, UK, and US, achieving 90% satisfaction rate",
+        "Optimized application performance, cutting page load times by 15% to boost user engagement",
+        "Handled 5+ concurrent projects, managing client communication and technical delivery"
+      ]
     }
   ],
   education: [
@@ -137,29 +186,24 @@ export const RESUME_DATA: ResumeData = {
   ],
   skills: [
     {
-      category: "Frontend",
+      category: "Core Expertise",
       icon: <Icons.Code />,
-      items: ["ReactJS", "VueJS", "ViteJS", "NextJS", "Antd", "Vuetify", "Bootstrap", "Material", "Electron", "Zustand", "Redux", "Pinia", "Context", "Klinechart", "Etherjs", "Tronweb", "Lighthouse", "HTML5", "CSS3", "JS/TS"]
+      items: ["Frontend Architecture Design", "React", "TypeScript", "Vue", "Vite", "Electron", "Real-time Systems (WebSocket)", "Performance Optimization", "System Scalability", "Team Leadership", "Technical Roadmap Planning", "State Management (Zustand, Redux, Pinia)", "Responsive Design", "Lighthouse"]
     },
     {
-      category: "Backend",
-      icon: <Icons.Database />,
-      items: ["PHP", "NodeJS", "Wordpress", "CakePHP", "Laravel", "ExpressJS", "Moleculer", "Nestjs", "SQL", "NoSQL", "Locking", "Index", "Partition", "Auth", "ACL", "Micro-services", "Security"]
-    },
-    {
-      category: "Blockchain",
+      category: "Advanced Domain Experience",
       icon: <Icons.Cube />,
-      items: ["Tron", "Ether", "Swap", "Bridge", "Batch-send", "CEX/DEX", "LP", "ERC20", "TRC20", "NFT", "mint", "burn", "Smart contract", "Multi-sign", "Metamask", "TronLink", "Ledger", "Walletconnect"]
+      items: ["Cryptocurrency Exchange UI", "Real-time Orderbook", "Chart Rendering (Klinechart)", "EVM / TRON Networks", "Web3.js", "Ethers.js", "TronWeb", "DApp Development", "Swap / Bridge / LP", "NFT / ERC20 / TRC20", "Multisig Wallets", "MetaMask / TronLink / WalletConnect", "Ledger Integration"]
     },
     {
-      category: "AI",
+      category: "AI-Driven Development",
       icon: <Icons.Chip />,
-      items: ["Github Copilot", "chatGPT", "Grok", "8n8", "v0.dev", "Cursor", "Claude", "Gemini", "Midjourney", "kling", "promeai"]
+      items: ["AI-first Implementation (80% AI-generated code)", "Prompt Engineering & Context Design", "Claude / Claude Code", "GitHub Copilot", "Cursor IDE", "ChatGPT / GPT-4o", "Gemini", "Grok", "v0.dev", "AI Code Review & Refactoring", "AI-augmented Testing & Docs", "n8n / AI Automation Workflows", "Midjourney / Kling / PromeAI", "AI-assisted Architecture Decisions", "RAG & Knowledge Base Integration"]
     },
     {
-      category: "DevOps",
-      icon: <Icons.Cloud />,
-      items: ["Nginx", "Apache", "Git Actions", "Jenkins", "Git", "Docker", "OSWAP", "Caching", "Rate limit"]
+      category: "Supporting Technologies",
+      icon: <Icons.Database />,
+      items: ["Node.js", "Express", "NestJS", "PHP (Laravel, CakePHP)", "REST / GraphQL", "SQL / No-SQL", "Docker", "CI/CD (GitHub Actions, Jenkins)", "Nginx", "Git"]
     }
   ],
   tools: [
@@ -167,10 +211,32 @@ export const RESUME_DATA: ResumeData = {
     { name: "Jira", category: "Task management" },
     { name: "Github", category: "Version management" },
     { name: "Figma", category: "UI Design, prototyping" },
-    { name: "Copilot", category: "AI Code Assistance" },
-    { name: "chatGPT", category: "Research" },
+    { name: "AntiGravity", category: "AI-native IDE" },
+    { name: "Copilot", category: "AI pair programming" },
+    { name: "Claude", category: "AI coding & architecture" },
+    { name: "ChatGPT", category: "AI research & review" },
+    { name: "Gemini", category: "AI multimodal" },
+    { name: "n8n", category: "AI workflow automation" },
     { name: "Terminal", category: "Command line tool" },
-    { name: "Xcode", category: "iOS development" },
     { name: "Notion", category: "Documentation" }
+  ],
+  technicalLeadership: [
+    "Defined frontend architecture guidelines and component library standardization across multiple projects",
+    "Established PR review process and coding standards, reducing regression bugs by 30%",
+    "Mentored mid-level engineers toward senior readiness through pair programming and design reviews",
+    "Conducted technical design reviews and authored Architecture Decision Records (ADRs)",
+    "Collaborated with backend team on API contract standardization using OpenAPI specs",
+    "Participated in hiring process: technical screening, coding challenges, and final interviews",
+    "Owned sprint planning, retrospectives, and delivery cadence for a team of 10 engineers",
+    "Pioneered AI-driven development culture — trained team on prompt engineering, AI code review, and AI-augmented workflows, increasing delivery velocity by 3x",
+    "Established guidelines for responsible AI usage: code ownership, review checkpoints, and quality gates for AI-generated code"
+  ],
+  systemDesignHighlights: [
+    "Designed scalable frontend architecture for high-frequency trading system handling 1k+ WebSocket updates/min",
+    "Built modular design system with reusable component library for multi-product reuse across 3+ projects",
+    "Implemented performance budget strategy for SPA applications, keeping bundle size under 200KB gzipped",
+    "Introduced lazy loading, route-level code splitting, and virtualized lists for optimal runtime performance",
+    "Architected real-time state synchronization layer with optimistic UI updates and conflict resolution",
+    "Designed caching strategy with stale-while-revalidate pattern for trading data feeds"
   ]
 };

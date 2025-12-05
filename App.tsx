@@ -21,14 +21,24 @@ const App: React.FC = () => {
   };
 
   const handlePrint = () => {
-    window.print();
+    // Force viewport to desktop width for mobile devices before printing
+    const viewport = document.querySelector('meta[name="viewport"]');
+    const originalContent = viewport?.getAttribute('content') || '';
+    viewport?.setAttribute('content', 'width=1400');
+    
+    // Small delay to let the browser re-layout at desktop width
+    setTimeout(() => {
+      window.print();
+      // Restore original viewport after print dialog closes
+      viewport?.setAttribute('content', originalContent);
+    }, 100);
   };
 
   return (
     <>
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
       
-      <div className={`min-h-screen bg-gray-50 text-gray-700 font-sans selection:bg-purple-500 selection:text-white transition-colors duration-300 dark:bg-[#0f111a] dark:text-gray-300 print:text-black print:bg-[linear-gradient(90deg,#f3f4f6_0%,#f3f4f6_30%,white_30%,white_100%)] ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
+      <div className={`min-h-screen bg-gray-50 text-gray-700 font-sans selection:bg-purple-500 selection:text-white transition-colors duration-300 dark:bg-[#0f111a] dark:text-gray-300 print:text-black print:bg-white ${isLoading ? 'h-screen overflow-hidden' : ''}`}>
         
         {/* Action Buttons - Hidden in Print */}
         <div className="fixed top-6 right-6 z-50 flex gap-4 print:hidden">
@@ -36,6 +46,7 @@ const App: React.FC = () => {
             onClick={toggleTheme}
             className="bg-white/10 backdrop-blur-md hover:bg-black/5 dark:hover:bg-white/20 text-gray-700 dark:text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 border border-gray-200 dark:border-white/10"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+            aria-label={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
           >
             {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
           </button>
@@ -44,6 +55,7 @@ const App: React.FC = () => {
             onClick={handlePrint}
             className="bg-gray-900 dark:bg-white/10 backdrop-blur-md hover:bg-gray-700 dark:hover:bg-white/20 text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 border border-transparent dark:border-white/10 group"
             title="Printable / Save as PDF"
+            aria-label="Open print dialog"
           >
             <Icons.Printer />
             <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
@@ -52,64 +64,73 @@ const App: React.FC = () => {
           </button>
         </div>
 
-        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row min-h-screen shadow-2xl print:shadow-none print:block transition-shadow duration-300">
+        <div className="max-w-[1400px] mx-auto flex flex-col md:flex-row min-h-screen shadow-2xl print:shadow-none print:!flex print:!flex-col transition-shadow duration-300">
           
+
           {/* SIDEBAR (LEFT) */}
-          <aside className="w-full md:w-[350px] lg:w-[400px] bg-white p-8 shrink-0 border-r border-gray-200 relative transition-colors duration-300 dark:bg-[#151621] dark:border-white/5 print:w-[30%] print:float-left print:bg-transparent print:text-black print:border-r print:border-gray-200 print:p-6 print:min-h-full">
+          <aside className="w-full md:w-[350px] lg:w-[400px] bg-white p-8 shrink-0 border-r border-gray-200 relative transition-colors duration-300 dark:bg-[#151621] dark:border-white/5 print:!w-full print:!float-none print:!bg-transparent print:!text-black print:!border-r-0 print:border-b print:border-gray-200 print:p-8 print:pb-6 print:!min-h-0 print:!flex print:!flex-col print:gap-6">
             
             {/* Decorative element */}
             <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-purple-500 via-pink-500 to-blue-500"></div>
 
             {/* SCROLLABLE CONTENT (Header + Intro) */}
-            <div className="space-y-10 mb-10">
+            <div className="space-y-10 mb-10 print:!mb-0 print:!flex print:!flex-row print:!items-center print:!gap-8 print:!space-y-0">
               {/* Profile Header */}
-              <Section className="flex flex-col items-center text-center space-y-4 pt-4">
+              <Section className="flex flex-col items-center text-center space-y-4 pt-4 print:pt-0 print:flex-col print:space-y-0 print:gap-6 print:text-left print:shrink-0">
                 <div className="relative group">
-                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-100 shadow-2xl transition-all duration-500 group-hover:scale-105 dark:border-white/10">
-                    <img 
-                      src="/public/avatar.png"
-                      onError={(e) => {
-                        e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=DatNguyen&backgroundColor=1e1b4b";
-                      }}
-                      alt={RESUME_DATA.name}
-                      className="w-full h-full object-cover"
-                    />
+                  <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-100 shadow-2xl transition-all duration-500 group-hover:scale-105 dark:border-white/10 print:w-28 print:h-28 print:border-2">
+                    <picture>
+                      <source srcSet="/avatar.webp" type="image/webp" />
+                      <source srcSet="/avatar.jpeg" type="image/jpeg" />
+                      <img 
+                        src="/avatar.jpeg"
+                        onError={(e) => {
+                          e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=DatNguyen&backgroundColor=1e1b4b";
+                        }}
+                        alt={RESUME_DATA.name}
+                        className="w-full h-full object-cover"
+                        loading="eager"
+                        fetchPriority="high"
+                        decoding="async"
+                      />
+                    </picture>
                   </div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
                 
-                <div className="space-y-1">
-                  <h1 className="text-3xl font-bold text-gray-900 tracking-tight dark:text-white">{RESUME_DATA.name}</h1>
-                  <p className="text-purple-600 font-medium tracking-wide uppercase text-sm dark:text-purple-400">{RESUME_DATA.title}</p>
+                <div className="space-y-1 print:!flex print:!flex-col print:!justify-center">
+                  <h1 className="text-3xl font-bold text-gray-900 tracking-tight dark:text-white print:!text-4xl">{RESUME_DATA.name}</h1>
+                  <p className="text-purple-600 font-medium tracking-wide uppercase text-sm dark:text-purple-400 print:!text-lg print:!text-purple-700">{RESUME_DATA.title}</p>
                 </div>
               </Section>
 
               {/* Intro */}
-              <Section delay={100}>
-                <p className="text-gray-600 text-sm leading-relaxed text-center md:text-left dark:text-gray-400 print:text-gray-700">
+              <Section delay={100} className="print:flex-1">
+                <p className="text-gray-600 text-sm leading-relaxed text-center md:text-left dark:text-gray-400 print:text-gray-700 print:text-justify print:max-w-2xl">
                   {RESUME_DATA.summary}
                 </p>
               </Section>
             </div>
 
             {/* STICKY CONTENT (Contact + Socials + Languages) */}
-            <div className="sticky top-8 space-y-10 print:static">
+            <div className="sticky top-8 space-y-10 print:!static print:!gap-6 print:!space-y-6 print:!pt-6 print:!border-t print:border-gray-200 print:!items-start">
               {/* Contact Info */}
-              <Section delay={200} className="space-y-4">
-                <div className="h-px w-full bg-gray-200 mb-6 dark:bg-white/10"></div>
-                <div className="space-y-4 text-sm">
-                  <div className="flex items-center gap-4 group">
-                    <div className="p-2 bg-gray-100 rounded-lg text-purple-600 group-hover:bg-purple-500 group-hover:text-white transition-colors dark:bg-white/5 dark:text-purple-400 print:bg-gray-50 print:text-purple-800">
+              <Section delay={200} className="space-y-4 print:space-y-3">
+                <div className="h-px w-full bg-gray-200 mb-6 dark:bg-white/10 print:!hidden"></div>
+                <h2 className="hidden print:!block text-gray-900 font-semibold mb-3 text-sm uppercase tracking-wider dark:text-white">Contact</h2>
+                <div className="space-y-4 text-sm print:space-y-2 print:flex print:flex-row print:gap-3">
+                  <div className="flex items-center gap-4 group print:gap-3 print:flex-1">
+                    <div className="p-2 bg-gray-100 rounded-lg text-purple-600 group-hover:bg-purple-500 group-hover:text-white transition-colors dark:bg-white/5 dark:text-purple-400 print:bg-transparent print:p-0 print:text-purple-600">
                       <Icons.Mail />
                     </div>
-                    <div className="flex flex-col">
+                    <div className="flex flex-col ">
                       <span className="text-xs text-gray-500 uppercase tracking-wider dark:text-gray-500">Email</span>
                       <a href={`mailto:${RESUME_DATA.email}`} className="text-gray-700 hover:text-gray-900 transition-colors dark:text-gray-300 dark:hover:text-white print:text-black">{RESUME_DATA.email}</a>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 group">
-                    <div className="p-2 bg-gray-100 rounded-lg text-purple-600 group-hover:bg-purple-500 group-hover:text-white transition-colors dark:bg-white/5 dark:text-purple-400 print:bg-gray-50 print:text-purple-800">
+                  <div className="flex items-center gap-4 group print:gap-3 print:flex-1">
+                    <div className="p-2 bg-gray-100 rounded-lg text-purple-600 group-hover:bg-purple-500 group-hover:text-white transition-colors dark:bg-white/5 dark:text-purple-400 print:bg-transparent print:p-0 print:text-purple-600">
                       <Icons.Phone />
                     </div>
                     <div className="flex flex-col">
@@ -118,8 +139,8 @@ const App: React.FC = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4 group">
-                    <div className="p-2 bg-gray-100 rounded-lg text-purple-600 group-hover:bg-purple-500 group-hover:text-white transition-colors dark:bg-white/5 dark:text-purple-400 print:bg-gray-50 print:text-purple-800">
+                  <div className="flex items-center gap-4 group print:gap-3">
+                    <div className="p-2 bg-gray-100 rounded-lg text-purple-600 group-hover:bg-purple-500 group-hover:text-white transition-colors dark:bg-white/5 dark:text-purple-400 print:bg-transparent print:p-0 print:text-purple-600">
                       <Icons.MapPin />
                     </div>
                     <div className="flex flex-col">
@@ -131,21 +152,21 @@ const App: React.FC = () => {
               </Section>
 
               {/* Socials */}
-              <Section delay={300}>
-                <h3 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider dark:text-white print:text-black">Socials</h3>
-                <div className="space-y-3 text-sm">
+              <Section delay={300} className="print:hidden print:space-y-3">
+                <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider dark:text-white print:text-black print:mb-3">Socials</h2>
+                <div className="space-y-3 text-sm print:space-y-2">
                   {RESUME_DATA.socials.map(social => (
                     <a 
                       key={social.platform}
                       href={social.url}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:translate-x-1 group dark:bg-white/5 dark:hover:bg-white/10 print:bg-transparent print:p-0 print:gap-2"
+                      className="flex items-center gap-3 p-3 bg-gray-50 rounded-xl hover:bg-gray-100 transition-all hover:translate-x-1 group dark:bg-white/5 dark:hover:bg-white/10 print:bg-transparent print:p-0 print:gap-3 print:hover:translate-x-0"
                     >
-                      <div className="text-purple-600 group-hover:text-gray-900 transition-colors dark:text-purple-400 dark:group-hover:text-white print:text-purple-800">{social.icon}</div>
+                      <div className="text-purple-600 group-hover:text-gray-900 transition-colors dark:text-purple-400 dark:group-hover:text-white print:text-purple-600">{social.icon}</div>
                       <div className="flex flex-col">
-                        <span className="text-gray-700 font-medium group-hover:text-gray-900 dark:text-gray-200 dark:group-hover:text-white print:text-black">{social.platform}</span>
-                        <span className="text-xs text-gray-500 print:text-gray-600">{social.username}</span>
+                        <span className="text-gray-700 font-medium group-hover:text-gray-900 dark:text-gray-200 dark:group-hover:text-white print:text-black print:hidden">{social.platform}</span>
+                        <span className="text-xs text-gray-500 print:text-gray-800 dark:text-gray-500 print:text-sm">{social.username}</span>
                       </div>
                     </a>
                   ))}
@@ -153,13 +174,13 @@ const App: React.FC = () => {
               </Section>
 
               {/* Languages */}
-              <Section delay={400}>
-                <h3 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider dark:text-white print:text-black">Languages</h3>
-                <div className="space-y-3">
+              <Section delay={400} className="print:hidden print:space-y-3">
+                <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider dark:text-white print:text-black print:mb-3">Languages</h2>
+                <div className="space-y-3 print:space-y-2 print:flex print:flex-row print:gap-3">
                   {RESUME_DATA.languages.map(lang => (
-                    <div key={lang.language} className="flex justify-between items-center text-sm border-b border-gray-200 pb-2 last:border-0 dark:border-white/5">
+                    <div key={lang.language} className="flex justify-between items-center print:gap-3 text-sm border-b border-gray-200 pb-2 last:border-0 dark:border-white/5 print:border-gray-200 print:pb-1">
                       <span className="text-gray-700 font-medium dark:text-gray-300 print:text-black">{lang.language}</span>
-                      <span className="text-gray-500 text-xs bg-gray-100 px-2 py-1 rounded-full dark:bg-white/5 print:bg-gray-100 print:text-gray-700">{lang.proficiency}</span>
+                      <span className="text-gray-500 text-xs bg-gray-100 px-2 py-1 rounded-full dark:bg-white/5 dark:text-gray-500 print:bg-gray-100 print:text-gray-700">{lang.proficiency}</span>
                     </div>
                   ))}
                 </div>
@@ -168,7 +189,7 @@ const App: React.FC = () => {
           </aside>
 
           {/* MAIN CONTENT (RIGHT) */}
-          <main className="flex-1 p-8 md:p-12 lg:p-16 bg-gray-50 space-y-16 transition-colors duration-300 dark:bg-[#0f111a] print:w-[70%] print:float-right print:p-8 print:pl-12 print:bg-transparent print:text-black">
+          <main className="flex-1 p-8 md:p-12 lg:p-16 bg-gray-50 space-y-16 transition-colors duration-300 dark:bg-[#0f111a] print:!w-full print:!float-none print:p-8 print:pt-6 print:bg-transparent print:text-black print:space-y-10">
             
             {/* Experience */}
             <Section delay={100} className="print:text-black">
@@ -188,7 +209,7 @@ const App: React.FC = () => {
                         <span className="px-3 py-1 text-xs font-bold text-purple-700 bg-purple-100 rounded-full border border-purple-200 dark:bg-purple-600/20 dark:text-purple-300 dark:border-purple-500/20 print:bg-gray-100 print:text-black print:border-gray-300">
                           {exp.period}
                         </span>
-                        <span className="text-xs text-gray-500 font-mono flex items-center gap-1 print:text-gray-600">
+                        <span className="text-xs text-gray-500 font-mono flex items-center gap-1 print:text-gray-600 dark:text-gray-300">
                           <Icons.MapPin /> {exp.location}
                         </span>
                       </div>
@@ -197,18 +218,61 @@ const App: React.FC = () => {
                     <h3 className="text-xl font-bold text-gray-800 mb-1 group-hover:text-purple-600 transition-colors dark:text-white dark:group-hover:text-purple-400 print:text-black">
                       {exp.role}
                     </h3>
-                    <div className="text-lg text-gray-500 mb-4 font-medium dark:text-gray-400 print:text-gray-700">{exp.company}</div>
+                    <div className="text-lg text-gray-500 mb-2 font-medium dark:text-gray-400 print:text-gray-700">{exp.company}</div>
                     
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4 dark:text-gray-400 print:text-black">
-                      {exp.description}
-                    </p>
+                    {exp.techStack && (
+                      <p className="text-xs text-purple-600 dark:text-purple-400 mb-2 font-mono print:text-gray-700">
+                        <span className="font-semibold">Tech:</span> {exp.techStack}
+                      </p>
+                    )}
+                    {exp.scope && (
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-3 italic print:text-gray-600">
+                        {exp.scope}
+                      </p>
+                    )}
+                    
+                    <ul className="text-gray-600 text-sm leading-relaxed mb-4 list-disc pl-5 space-y-1.5 dark:text-gray-400 print:text-black">
+                      {exp.description.map((item) => (
+                        <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
             </Section>
 
+            {/* Technical Leadership */}
+            <Section delay={200} className="print:break-inside-avoid">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-2 h-8 bg-amber-500 rounded-full"></div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white print:text-black">Technical Leadership</h2>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm dark:bg-[#151621] dark:border-white/5 dark:shadow-none print:bg-white print:border-gray-200">
+                <ul className="text-gray-600 text-sm leading-relaxed list-disc pl-5 space-y-2 dark:text-gray-400 print:text-black">
+                  {RESUME_DATA.technicalLeadership.map((item) => (
+                    <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
+                  ))}
+                </ul>
+              </div>
+            </Section>
+
+            {/* System Design Highlights */}
+            <Section delay={250} className="print:break-inside-avoid">
+              <div className="flex items-center gap-3 mb-8">
+                <div className="w-2 h-8 bg-teal-500 rounded-full"></div>
+                <h2 className="text-2xl font-bold text-gray-900 dark:text-white print:text-black">System Design Highlights</h2>
+              </div>
+              <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm dark:bg-[#151621] dark:border-white/5 dark:shadow-none print:bg-white print:border-gray-200">
+                <ul className="text-gray-600 text-sm leading-relaxed list-disc pl-5 space-y-2 dark:text-gray-400 print:text-black">
+                  {RESUME_DATA.systemDesignHighlights.map((item) => (
+                    <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
+                  ))}
+                </ul>
+              </div>
+            </Section>
+
             {/* Skills */}
-            <Section delay={300} className="print:break-inside-avoid">
+            <Section delay={300} className="">
               <div className="flex items-center gap-3 mb-8">
                 <div className="w-2 h-8 bg-pink-500 rounded-full"></div>
                 <h2 className="text-2xl font-bold text-gray-900 dark:text-white print:text-black">Skills</h2>
@@ -216,7 +280,7 @@ const App: React.FC = () => {
               
               <div className="grid grid-cols-1 gap-8">
                 {RESUME_DATA.skills.map((skillGroup) => (
-                  <div key={skillGroup.category} className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:border-gray-300 transition-colors dark:bg-[#151621] dark:border-white/5 dark:hover:border-white/10 dark:shadow-none print:bg-white print:border-gray-200 print:shadow-sm">
+                  <div key={skillGroup.category} className="print:break-inside-avoid bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:border-gray-300 transition-colors dark:bg-[#151621] dark:border-white/5 dark:hover:border-white/10 dark:shadow-none print:bg-white print:border-gray-200 print:shadow-sm">
                     <div className="flex items-center gap-3 mb-4 text-purple-600 dark:text-purple-400 print:text-black">
                       {skillGroup.icon}
                       <h3 className="text-lg font-bold text-gray-900 dark:text-white print:text-black">{skillGroup.category}</h3>
@@ -250,7 +314,7 @@ const App: React.FC = () => {
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white print:text-black">{RESUME_DATA.education[0].institution}</h3>
                   <p className="text-purple-600 font-medium dark:text-purple-400 print:text-gray-700">{RESUME_DATA.education[0].degree}</p>
-                  <p className="text-sm text-gray-500 mt-1">{RESUME_DATA.education[0].year}</p>
+                  <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">{RESUME_DATA.education[0].year}</p>
                 </div>
               </div>
             </Section>
@@ -266,7 +330,7 @@ const App: React.FC = () => {
                 {RESUME_DATA.tools.map((tool) => (
                   <div key={tool.name} className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-gray-200 shadow-sm hover:-translate-y-1 transition-all group cursor-default hover:shadow-md dark:bg-[#151621] dark:border-white/5 dark:hover:bg-white/5 dark:shadow-none print:bg-white print:border-gray-200">
                     <span className="text-gray-900 font-semibold text-sm mb-1 dark:text-white print:text-black">{tool.name}</span>
-                    <span className="text-[10px] text-gray-500 uppercase tracking-wider text-center print:text-gray-600">{tool.category}</span>
+                    <span className="text-[10px] text-gray-500 uppercase tracking-wider text-center print:text-gray-600 dark:text-gray-300">{tool.category}</span>
                   </div>
                 ))}
               </div>
@@ -277,7 +341,7 @@ const App: React.FC = () => {
 
         <ChatWidget />
 
-        <footer className="text-center py-8 text-gray-500 text-sm print:hidden">
+        <footer className="text-center py-8 text-gray-500 text-sm print:hidden dark:text-gray-400">
           <p>© {new Date().getFullYear()} {RESUME_DATA.name}. All rights reserved.</p>
         </footer>
       </div>
