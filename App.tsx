@@ -67,7 +67,7 @@ const App: React.FC = () => {
                 <div className="relative group">
                   <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-100 shadow-2xl transition-all duration-500 group-hover:scale-105 dark:border-white/10">
                     <img 
-                      src="/public/avatar.png"
+                      src="/avatar.png"
                       onError={(e) => {
                         e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=DatNguyen&backgroundColor=1e1b4b";
                       }}

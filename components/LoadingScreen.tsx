@@ -47,7 +47,8 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             className="text-4xl md:text-5xl font-bold tracking-tight text-center translate-y-0 transition-transform duration-700 ease-out"
             style={{ 
               transform: progress > 10 ? 'translateY(0)' : 'translateY(100%)',
-              opacity: progress > 10 ? 1 : 0
+              opacity: progress > 10 ? 1 : 0,
+              lineHeight: '1.2'
             }}
           >
             Dat Nguyen
@@ -79,7 +80,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         {/* Percentage Counter */}
         <div className="mt-2 text-right">
           <span className="text-xs font-mono text-gray-500">
-            {Math.min(100, Math.floor(progress)).toString().padStart(3, '0')}%
+            {Math.min(100, Math.floor(progress)).toString().padStart(2, '0')}%
           </span>
         </div>
       </div>
