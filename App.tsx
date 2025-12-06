@@ -36,6 +36,7 @@ const App: React.FC = () => {
             onClick={toggleTheme}
             className="bg-white/10 backdrop-blur-md hover:bg-black/5 dark:hover:bg-white/20 text-gray-700 dark:text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 border border-gray-200 dark:border-white/10"
             title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+            aria-label={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
           >
             {theme === 'dark' ? <Icons.Sun /> : <Icons.Moon />}
           </button>
@@ -44,6 +45,7 @@ const App: React.FC = () => {
             onClick={handlePrint}
             className="bg-gray-900 dark:bg-white/10 backdrop-blur-md hover:bg-gray-700 dark:hover:bg-white/20 text-white p-3 rounded-full shadow-xl transition-all duration-300 hover:scale-110 border border-transparent dark:border-white/10 group"
             title="Printable / Save as PDF"
+            aria-label="Open print dialog"
           >
             <Icons.Printer />
             <span className="absolute right-full mr-3 top-1/2 -translate-y-1/2 bg-gray-900 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap shadow-lg">
@@ -66,14 +68,18 @@ const App: React.FC = () => {
               <Section className="flex flex-col items-center text-center space-y-4 pt-4">
                 <div className="relative group">
                   <div className="w-32 h-32 rounded-full overflow-hidden border-4 border-gray-100 shadow-2xl transition-all duration-500 group-hover:scale-105 dark:border-white/10">
-                    <img 
-                      src="/avatar.jpeg"
-                      onError={(e) => {
-                        e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=DatNguyen&backgroundColor=1e1b4b";
-                      }}
-                      alt={RESUME_DATA.name}
-                      className="w-full h-full object-cover"
-                    />
+                    <picture>
+                      <source srcSet="/avatar.webp" type="image/webp" />
+                      <source srcSet="/avatar.jpeg" type="image/jpeg" />
+                      <img 
+                        src="/avatar.jpeg"
+                        onError={(e) => {
+                          e.currentTarget.src = "https://api.dicebear.com/7.x/avataaars/svg?seed=DatNguyen&backgroundColor=1e1b4b";
+                        }}
+                        alt={RESUME_DATA.name}
+                        className="w-full h-full object-cover"
+                      />
+                    </picture>
                   </div>
                   <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-purple-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </div>
@@ -132,7 +138,7 @@ const App: React.FC = () => {
 
               {/* Socials */}
               <Section delay={300}>
-                <h3 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider dark:text-white print:text-black">Socials</h3>
+                <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider dark:text-white print:text-black">Socials</h2>
                 <div className="space-y-3 text-sm">
                   {RESUME_DATA.socials.map(social => (
                     <a 
@@ -145,7 +151,7 @@ const App: React.FC = () => {
                       <div className="text-purple-600 group-hover:text-gray-900 transition-colors dark:text-purple-400 dark:group-hover:text-white print:text-purple-800">{social.icon}</div>
                       <div className="flex flex-col">
                         <span className="text-gray-700 font-medium group-hover:text-gray-900 dark:text-gray-200 dark:group-hover:text-white print:text-black">{social.platform}</span>
-                        <span className="text-xs text-gray-500 print:text-gray-600">{social.username}</span>
+                        <span className="text-xs text-gray-500 print:text-gray-600 dark:text-gray-500">{social.username}</span>
                       </div>
                     </a>
                   ))}
@@ -154,12 +160,12 @@ const App: React.FC = () => {
 
               {/* Languages */}
               <Section delay={400}>
-                <h3 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider dark:text-white print:text-black">Languages</h3>
+                <h2 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider dark:text-white print:text-black">Languages</h2>
                 <div className="space-y-3">
                   {RESUME_DATA.languages.map(lang => (
                     <div key={lang.language} className="flex justify-between items-center text-sm border-b border-gray-200 pb-2 last:border-0 dark:border-white/5">
                       <span className="text-gray-700 font-medium dark:text-gray-300 print:text-black">{lang.language}</span>
-                      <span className="text-gray-500 text-xs bg-gray-100 px-2 py-1 rounded-full dark:bg-white/5 print:bg-gray-100 print:text-gray-700">{lang.proficiency}</span>
+                      <span className="text-gray-500 text-xs bg-gray-100 px-2 py-1 rounded-full dark:bg-white/5 dark:text-gray-500 print:bg-gray-100 print:text-gray-700">{lang.proficiency}</span>
                     </div>
                   ))}
                 </div>
@@ -188,7 +194,7 @@ const App: React.FC = () => {
                         <span className="px-3 py-1 text-xs font-bold text-purple-700 bg-purple-100 rounded-full border border-purple-200 dark:bg-purple-600/20 dark:text-purple-300 dark:border-purple-500/20 print:bg-gray-100 print:text-black print:border-gray-300">
                           {exp.period}
                         </span>
-                        <span className="text-xs text-gray-500 font-mono flex items-center gap-1 print:text-gray-600">
+                        <span className="text-xs text-gray-500 font-mono flex items-center gap-1 print:text-gray-600 dark:text-gray-300">
                           <Icons.MapPin /> {exp.location}
                         </span>
                       </div>
@@ -252,7 +258,7 @@ const App: React.FC = () => {
                 <div>
                   <h3 className="text-lg font-bold text-gray-900 dark:text-white print:text-black">{RESUME_DATA.education[0].institution}</h3>
                   <p className="text-purple-600 font-medium dark:text-purple-400 print:text-gray-700">{RESUME_DATA.education[0].degree}</p>
-                  <p className="text-sm text-gray-500 mt-1">{RESUME_DATA.education[0].year}</p>
+                  <p className="text-sm text-gray-500 mt-1 dark:text-gray-400">{RESUME_DATA.education[0].year}</p>
                 </div>
               </div>
             </Section>
@@ -268,7 +274,7 @@ const App: React.FC = () => {
                 {RESUME_DATA.tools.map((tool) => (
                   <div key={tool.name} className="flex flex-col items-center justify-center p-4 bg-white rounded-2xl border border-gray-200 shadow-sm hover:-translate-y-1 transition-all group cursor-default hover:shadow-md dark:bg-[#151621] dark:border-white/5 dark:hover:bg-white/5 dark:shadow-none print:bg-white print:border-gray-200">
                     <span className="text-gray-900 font-semibold text-sm mb-1 dark:text-white print:text-black">{tool.name}</span>
-                    <span className="text-[10px] text-gray-500 uppercase tracking-wider text-center print:text-gray-600">{tool.category}</span>
+                    <span className="text-[10px] text-gray-500 uppercase tracking-wider text-center print:text-gray-600 dark:text-gray-300">{tool.category}</span>
                   </div>
                 ))}
               </div>
@@ -279,7 +285,7 @@ const App: React.FC = () => {
 
         <ChatWidget />
 
-        <footer className="text-center py-8 text-gray-500 text-sm print:hidden">
+        <footer className="text-center py-8 text-gray-500 text-sm print:hidden dark:text-gray-400">
           <p>© {new Date().getFullYear()} {RESUME_DATA.name}. All rights reserved.</p>
         </footer>
       </div>

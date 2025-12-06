@@ -81,7 +81,7 @@ export const RESUME_DATA: ResumeData = {
   hobbies: ["Traveling", "Reading", "Gaming", "Coding", "AI Exploration", "Badminton", "Chess", "Running", "Workout"],
   socials: [
     { platform: "Telegram", username: "@nguyentuandat.vn", url: "https://t.me/nguyentuandatvn", icon: <Icons.Telegram /> },
-    { platform: "LinkedIn", username: "nguyentuandat.vn", url: "https://linkedin.com/in/nguyentuandatvn", icon: <Icons.LinkedIn /> }
+    { platform: "LinkedIn", username: "nguyentuandat", url: "https://linkedin.com/in/nguyentuandat", icon: <Icons.LinkedIn /> }
   ],
   languages: [
     { language: "Vietnamese", proficiency: "Native" },

@@ -64,7 +64,11 @@ const ChatWidget: React.FC = () => {
             <Icons.Sparkles />
             <span className="font-semibold text-sm">Ask AI Dat</span>
           </div>
-          <button onClick={toggleOpen} className="hover:bg-gray-700 p-1 rounded transition-colors">
+          <button
+            onClick={toggleOpen}
+            className="hover:bg-gray-700 p-1 rounded transition-colors"
+            aria-label="Close chat assistant"
+          >
             <Icons.X />
           </button>
         </div>
@@ -131,6 +135,7 @@ const ChatWidget: React.FC = () => {
             type="submit" 
             disabled={!inputValue.trim() || chatState === ChatState.THINKING}
             className="bg-gray-900 text-white p-2 rounded-xl hover:bg-gray-800 disabled:opacity-50 disabled:cursor-not-allowed transition-colors dark:bg-purple-600 dark:hover:bg-purple-500"
+            aria-label="Send message"
           >
             <Icons.Send />
           </button>
@@ -144,6 +149,7 @@ const ChatWidget: React.FC = () => {
           group flex items-center justify-center w-14 h-14 rounded-full shadow-xl transition-all duration-300
           ${isOpen ? 'bg-gray-700 rotate-90 scale-0' : 'bg-gray-900 hover:bg-gray-800 scale-100 dark:bg-purple-600 dark:hover:bg-purple-500'}
         `}
+        aria-label={isOpen ? 'Hide chat assistant' : 'Open chat assistant'}
       >
         <span className="text-white">
           <Icons.Sparkles />
