@@ -49,6 +49,7 @@ export interface ToolItem {
 
 export interface ResumeData {
   name: string;
+  alias?: string;
   title: string;
   summary: string;
   email: string;
@@ -59,6 +60,7 @@ export interface ResumeData {
   experience: ExperienceItem[];
   education: EducationItem[];
   skills: SkillCategory[];
+  knowledges: string[];
   tools: ToolItem[];
   dob: string;
   hobbies?: string[];

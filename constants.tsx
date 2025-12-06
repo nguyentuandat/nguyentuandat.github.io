@@ -72,13 +72,14 @@ export const Icons = {
 
 export const RESUME_DATA: ResumeData = {
   name: "Dat Nguyen",
+  alias:"Đạt Nguyễn or Nguyễn Tuấn Đạt",
   title: "Software Engineer",
   summary: "Dynamic and versatile professional with over 10 years of experience in full-stack development and mid-level management. Proficient in frontend technologies (React, Vue, Web3.js, Ethers.js) and backend systems (PHP, Node.js, MySQL), with a strong focus on blockchain frontend solutions and AI-driven workflows (Grok, GitHub Copilot, Gemini). Passionate about leading technical teams and delivering innovative projects, seeking a challenging role in a collaborative environment to drive impactful solutions.",
   email: "nguyentuandat.vn@gmail.com",
   phone: "(+84) 949 000 910",
   address: "Ho Chi Minh city, Viet Nam",
   dob: "5/6/1990",
-  hobbies: ["Traveling", "Reading", "Gaming", "Coding", "AI Exploration", "Badminton", "Chess", "Running", "Workout"],
+  hobbies: ["Traveling", "Reading", "Gaming", "Coding", "AI Exploration", "Badminton", "Chinese chess", "Running", "Workout"],
   socials: [
     { platform: "Telegram", username: "@nguyentuandat.vn", url: "https://t.me/nguyentuandatvn", icon: <Icons.Telegram /> },
     { platform: "LinkedIn", username: "nguyentuandat", url: "https://linkedin.com/in/nguyentuandat", icon: <Icons.LinkedIn /> }
@@ -86,6 +87,33 @@ export const RESUME_DATA: ResumeData = {
   languages: [
     { language: "Vietnamese", proficiency: "Native" },
     { language: "English", proficiency: "Communication" }
+  ],
+  knowledges: [
+    "Full-stack Development",
+    "Blockchain Frontend Solutions",
+    "AI-driven Workflows",
+    "Web3.js & Ethers.js",
+    "React & Vue Frameworks",
+    "PHP & Node.js Backend",
+    "Database Management (MySQL, MongoDB)",
+    "DevOps & CI/CD Pipelines",
+    "Fintech & Cryptocurrency",
+    "E-commerce Platforms",
+    "Coporate Web Solutions",
+    "Blog & Magazine Sites",
+    "CMS Customization",
+    "Team Leadership & Mentorship",
+    "Agile Methodologies",
+    "Steaming & Performance Optimization",
+    "On-page SEO",
+    "Cross-functional Collaboration",
+    "Technical Documentation",
+    "User Experience (UX) Design",
+    "Healthcare IT Solutions",
+    "Medical Record Systems",
+    "Real Estate Platforms",
+    "Project Management Tools",
+    "Education & E-learning Systems",
   ],
   experience: [
     {
