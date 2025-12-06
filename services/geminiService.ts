@@ -22,7 +22,7 @@ Here is the structured context about ${RESUME_DATA.name}:
 - Title: ${RESUME_DATA.title}
 - Summary: ${RESUME_DATA.summary}
 - Skills: ${RESUME_DATA.skills.map(s => `${s.category}: ${s.items.join(", ")}`).join("; ")}
-- Experience: ${RESUME_DATA.experience.map(e => `${e.role} at ${e.company} (${e.period}): ${e.description}`).join("\n")}
+- Experience: ${RESUME_DATA.experience.map(e => `${e.role} at ${e.company} (${e.period}): ${e.description.join("; ")}`).join("\n")}
 - Education: ${RESUME_DATA.education.map(e => `${e.degree} at ${e.institution}`).join("\n")}
 - Contact: ${RESUME_DATA.email}, ${RESUME_DATA.phone}
 - Date of Birth: ${RESUME_DATA.dob}

@@ -3,6 +3,7 @@
 ## Coding Assistants
 - **GitHub Copilot:** Daily driver for boilerplate code generation, unit test writing, and autocomplete.
 - **Cursor:** Using Cursor IDE for codebase-aware refactoring and natural language code editing.
+- **Gemini:** Pairing with the Gemini Advanced Code Assist for code reviews, prompt-to-code scaffolding, and architectural exploration.
 
 ## LLMs for Research & Architecture
 - **ChatGPT (OpenAI):** Used for brainstorming system architecture, debugging complex error logs, and generating documentation.

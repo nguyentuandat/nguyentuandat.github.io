@@ -199,9 +199,11 @@ const App: React.FC = () => {
                     </h3>
                     <div className="text-lg text-gray-500 mb-4 font-medium dark:text-gray-400 print:text-gray-700">{exp.company}</div>
                     
-                    <p className="text-gray-600 text-sm leading-relaxed mb-4 dark:text-gray-400 print:text-black">
-                      {exp.description}
-                    </p>
+                    <ul className="text-gray-600 text-sm leading-relaxed mb-4 list-disc pl-5 space-y-2 dark:text-gray-400 print:text-black">
+                      {exp.description.map((item) => (
+                        <li key={item}>{item}</li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>

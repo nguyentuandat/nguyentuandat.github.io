@@ -18,8 +18,7 @@ export interface ExperienceItem {
   company: string;
   period: string;
   location: string;
-  description: string;
-  achievements?: string[]; // Split description into bullets if needed, or keep as string
+  description: string[]; // Bullet-point highlights shown in the timeline and AI prompt
 }
 
 export interface ProjectItem {

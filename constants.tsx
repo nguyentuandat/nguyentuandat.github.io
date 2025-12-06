@@ -73,7 +73,7 @@ export const Icons = {
 export const RESUME_DATA: ResumeData = {
   name: "Dat Nguyen",
   title: "Software Engineer",
-  summary: "Dynamic and versatile professional with over 10 years of experience in full-stack development and mid-level management. Proficient in frontend technologies (React, Vue, Web3.js, Ethers.js) and backend systems (PHP, Node.js, MySQL), with a strong focus on blockchain frontend solutions and AI-driven workflows (Grok, GitHub Copilot). Passionate about leading technical teams and delivering innovative projects, seeking a challenging role in a collaborative environment to drive impactful solutions.",
+  summary: "Dynamic and versatile professional with over 10 years of experience in full-stack development and mid-level management. Proficient in frontend technologies (React, Vue, Web3.js, Ethers.js) and backend systems (PHP, Node.js, MySQL), with a strong focus on blockchain frontend solutions and AI-driven workflows (Grok, GitHub Copilot, Gemini). Passionate about leading technical teams and delivering innovative projects, seeking a challenging role in a collaborative environment to drive impactful solutions.",
   email: "nguyentuandat.vn@gmail.com",
   phone: "(+84) 949 000 910",
   address: "Ho Chi Minh city, Viet Nam",
@@ -94,7 +94,12 @@ export const RESUME_DATA: ResumeData = {
       company: "Double O",
       period: "Present",
       location: "HCM, VN",
-      description: "Founded and led technical teams to deliver outsourced solutions, including websites, e-commerce platforms, and frontend for blockchain projects (DApps, swaps, bridges, multisign wallets, NFTs) on EVM and TRON networks using JS/TS (React, Vue, Web3.js, Ethers.js), PHP (CakePHP, WordPress), and Electron for desktop apps. Leveraged AI tools (Grok, GitHub Copilot, ChatGPT, 8n8) for code assistance, code review, research, and automation flows, boosting overall performance by 20%. Developed frontend features for a cryptocurrency exchange platform. Managed backend (MySQL, MongoDB, Firebase), frontend (HTML5, CSS3 with Bootstrap, Ant Design, Material...), and DevOps operations (eg Github actions, Jenkin, Docker). Mentored developers."
+      description: [
+        "Led cross-functional teams delivering outsourced web, e-commerce, and blockchain frontends (DApps, swaps, bridges, multisig wallets, NFTs) across EVM and TRON using React, Vue, Web3.js, Ethers.js, PHP stacks, and Electron",
+        "Leveraged AI tools (Grok, GitHub Copilot, ChatGPT, Gemini, 8n8) for code assistance, reviews, research, and automation, boosting throughput by 20%",
+        "Built high-frequency cryptocurrency exchange features while managing backend data stores (MySQL, MongoDB, Firebase) and DevOps pipelines (GitHub Actions, Jenkins, Docker)",
+        "Mentored engineers and established engineering best practices for delivery quality"
+      ]
     },
     {
       id: "exp-2",
@@ -102,7 +107,11 @@ export const RESUME_DATA: ResumeData = {
       company: "Ringier",
       period: "May 2018 - May 2019",
       location: "HCM, VN",
-      description: "Developed and maintained real estate trading platforms using Node.js micro-services and ReactJS, improving user interaction speed by 30%. Built and customized WordPress-based magazine websites. Collaborated with product teams to implement responsive designs. Optimized backend APIs, reducing server response time for high-traffic platforms."
+      description: [
+        "Built Node.js microservices and React interfaces for real estate trading platforms, improving interaction speed by 30%",
+        "Customized WordPress-based magazine sites aligned with stakeholder branding and editorial workflows",
+        "Partnered with product and design teams to ship responsive UX and optimized backend APIs for high-traffic audiences"
+      ]
     },
     {
       id: "exp-3",
@@ -110,7 +119,11 @@ export const RESUME_DATA: ResumeData = {
       company: "Wumbo",
       period: "May 2016 - May 2018",
       location: "HCM, VN",
-      description: "Developed building and project management systems for high-end residential buildings using PHP (Phalcon), MySQL, Node.js, and Sails.js. Built core functionalities based on team leader's requirements. Implemented features with Node.js and ReactJS, improving user interface responsiveness. Trained frontend developers, boosting team's front-end development capacity."
+      description: [
+        "Developed building and project management platforms for luxury residential clients using PHP (Phalcon), MySQL, Node.js, and Sails.js",
+        "Delivered core feature implementations guided by leadership requirements with React and Node.js",
+        "Improved frontend responsiveness and trained developers to expand the team's React capability"
+      ]
     },
     {
       id: "exp-4",
@@ -118,7 +131,10 @@ export const RESUME_DATA: ResumeData = {
       company: "Apide",
       period: "May 2015 - May 2016",
       location: "HCM, VN",
-      description: "Developed and customized WordPress websites and plugins for magazine, corporate, and fund management platforms. Collaborated with international clients and partners from Denmark, Italy, and Germany to deliver tailored web solutions."
+      description: [
+        "Delivered custom WordPress websites and plugins for magazine, corporate, and fund management clients",
+        "Collaborated with stakeholders across Denmark, Italy, and Germany to tailor solutions and meet launch timelines"
+      ]
     },
     {
       id: "exp-5",
@@ -126,7 +142,11 @@ export const RESUME_DATA: ResumeData = {
       company: "BCA",
       period: "May 2013 - May 2015",
       location: "HCM, VN",
-      description: "Developed web solutions for e-commerce, magazines, blogs, corporate sites, e-learning, fundraising, wheel games, rent space, and booking systems using CakePHP, MySQL, and WordPress. Collaborated with clients and partners from Singapore, UK, and US, achieving a 90% client satisfaction rate and fostering long-term business relationships. Optimized web applications, reducing page load times by 15% and enhancing user engagement."
+      description: [
+        "Delivered web solutions spanning e-commerce, media, education, fundraising, gaming, and booking systems using CakePHP, MySQL, and WordPress",
+        "Partnered with clients in Singapore, the UK, and the US to achieve 90% satisfaction and long-term engagements",
+        "Optimized application performance, cutting page load times by 15% to boost user engagement"
+      ]
     }
   ],
   education: [
@@ -171,6 +191,7 @@ export const RESUME_DATA: ResumeData = {
     { name: "Figma", category: "UI Design, prototyping" },
     { name: "Copilot", category: "AI Code Assistance" },
     { name: "chatGPT", category: "Research" },
+    { name: "Gemini", category: "AI Research" },
     { name: "Terminal", category: "Command line tool" },
     { name: "Xcode", category: "iOS development" },
     { name: "Notion", category: "Documentation" }

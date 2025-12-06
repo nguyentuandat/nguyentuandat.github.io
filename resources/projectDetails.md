@@ -37,7 +37,7 @@
 ## Software Configuration
 - **IDE:** VS Code with custom extensions (GitLens, Prettier, ESLint, Tailwind CSS IntelliSense).
 - **Terminal:** Warp Terminal using Oh-My-Zsh and Starship prompt.
-- **AI Workflow:** heavily reliant on GitHub Copilot for boilerplate and Grok/Claude for architectural planning.
+- **AI Workflow:** heavily reliant on GitHub Copilot for boilerplate and Grok/Claude/Gemini for architectural planning.
 
 # Side Projects & Experiments
 
