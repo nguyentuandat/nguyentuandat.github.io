@@ -19,7 +19,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
         }
         return next;
       });
-    }, 150);
+    }, 100);
 
     return () => clearInterval(timer);
   }, []);
