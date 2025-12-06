@@ -78,6 +78,9 @@ const App: React.FC = () => {
                         }}
                         alt={RESUME_DATA.name}
                         className="w-full h-full object-cover"
+                        loading="eager"
+                        fetchPriority="high"
+                        decoding="async"
                       />
                     </picture>
                   </div>
