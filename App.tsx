@@ -233,13 +233,46 @@ const App: React.FC = () => {
                     
                     <ul className="text-gray-600 text-sm leading-relaxed mb-4 list-disc pl-5 space-y-1.5 dark:text-gray-400 print:text-black">
                       {exp.description.map((item) => (
-                        <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
+                        <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(?<![A-Za-z])(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
                       ))}
                     </ul>
                   </div>
                 ))}
               </div>
             </Section>
+
+            {/* Projects / AI Systems */}
+            {RESUME_DATA.projects && RESUME_DATA.projects.length > 0 && (
+              <Section delay={150} className="print:break-inside-avoid">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className="w-2 h-8 bg-indigo-500 rounded-full"></div>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white print:text-black">Personal Projects / AI Systems</h2>
+                </div>
+                <div className="grid grid-cols-1 gap-6">
+                  {RESUME_DATA.projects.map((project) => (
+                    <div key={project.id} className="print:break-inside-avoid bg-white rounded-2xl p-6 border border-gray-200 shadow-sm hover:border-gray-300 transition-colors dark:bg-[#151621] dark:border-white/5 dark:hover:border-white/10 dark:shadow-none print:bg-white print:border-gray-200">
+                      <div className="flex items-center justify-between mb-2">
+                        <h3 className="text-lg font-bold text-gray-900 dark:text-white print:text-black">{project.title}</h3>
+                        {project.link && (
+                          <a href={project.link} target="_blank" rel="noopener noreferrer" className="text-xs text-purple-600 hover:underline dark:text-purple-400 print:hidden">View →</a>
+                        )}
+                      </div>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-4 dark:text-gray-400 print:text-black">{project.description}</p>
+                      <div className="flex flex-wrap gap-2">
+                        {project.tags.map((tag) => (
+                          <span
+                            key={tag}
+                            className="px-3 py-1.5 text-xs font-medium text-gray-700 bg-gray-100 rounded-lg border border-gray-200 dark:text-gray-300 dark:bg-white/5 dark:border-white/5 print:bg-gray-100 print:text-black print:border-gray-300"
+                          >
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Section>
+            )}
 
             {/* Technical Leadership */}
             <Section delay={200} className="print:break-inside-avoid">
@@ -250,7 +283,7 @@ const App: React.FC = () => {
               <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm dark:bg-[#151621] dark:border-white/5 dark:shadow-none print:bg-white print:border-gray-200">
                 <ul className="text-gray-600 text-sm leading-relaxed list-disc pl-5 space-y-2 dark:text-gray-400 print:text-black">
                   {RESUME_DATA.technicalLeadership.map((item) => (
-                    <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
+                    <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(?<![A-Za-z])(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
                   ))}
                 </ul>
               </div>
@@ -265,7 +298,7 @@ const App: React.FC = () => {
               <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-sm dark:bg-[#151621] dark:border-white/5 dark:shadow-none print:bg-white print:border-gray-200">
                 <ul className="text-gray-600 text-sm leading-relaxed list-disc pl-5 space-y-2 dark:text-gray-400 print:text-black">
                   {RESUME_DATA.systemDesignHighlights.map((item) => (
-                    <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
+                    <li key={item} dangerouslySetInnerHTML={{ __html: item.replace(/(?<![A-Za-z])(\d+[kK]?\+?%?)/g, '<strong class="text-gray-900 dark:text-white print:text-black">$1</strong>') }} />
                   ))}
                 </ul>
               </div>

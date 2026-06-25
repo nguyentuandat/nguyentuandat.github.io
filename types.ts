@@ -60,6 +60,7 @@ export interface ResumeData {
   socials: SocialLink[];
   languages: LanguageItem[];
   experience: ExperienceItem[];
+  projects?: ProjectItem[];
   education: EducationItem[];
   skills: SkillCategory[];
   knowledges: string[];
